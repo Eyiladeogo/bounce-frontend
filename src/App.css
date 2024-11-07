@@ -1,0 +1,639 @@
+.App {
+  text-align: center;
+}
+
+.shoe-wrapper{
+  /* position: relative; */
+  display: flex;
+  justify-content: space-around;
+  opacity: 0;
+  animation: bounceIn 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+  /* z-index: 1; */
+}
+
+.logo-wrapper{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.shoe {
+  height: 20vmin;
+  /* animation: scaleUp 2s ease-in-out infinite; */
+}
+
+/* .animated-shii {
+  z-index: 1;
+} */
+
+@keyframes scaleUp {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* Slight scaling in the middle of the animation */
+  }
+}
+
+footer{
+  font-weight: 500;
+  color: #646cff;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  min-width: 100vw;
+  padding: 12px 0px;
+  background-color:#242424
+}
+
+footer:hover {
+  color: #535bf2;
+}
+
+/* Navbar fade-in */
+nav {
+  position: relative;
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.5s; /* Smooth delay to start after page load */
+}
+
+.App-header {
+  background-color: white;
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.name{
+  font-size: 3em;
+  padding: 0;
+  opacity: 0;
+  margin-top: 20px;
+  animation: slideUpFadeIn 1.5s ease-out forwards;
+  animation-delay: 1s; /* Delayed to sync after logo */
+}
+
+.slogan{
+  font-size: 1.5em;
+  opacity: 0;
+  margin-top: 10px;
+  animation: slideUpFadeIn 1.5s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+/* Slide-up and fade-in animation */
+@keyframes slideUpFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start below the initial position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Move to original position */
+  }
+}
+
+/* Bounce in animation for logo */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px); /* Start above the position */
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(10px); /* Slight downward bounce */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Settle in original position */
+  }
+}
+
+/* Fade-in effect for NavBar */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Navbar Styles */
+.icons .cursor-pointer:hover {
+    color: #333; /* Change color on hover */
+    transform: scale(1.25); /* Slightly enlarge the icon on hover */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Saved Items */
+.saved-container {
+  margin: 20px;
+  padding: 3.5em;
+  border-radius: 3em;
+  border: 1px solid #d4d7dd;
+}
+
+.saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.saved-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  border: 1px solid #d4d7dd;
+  border-radius: 8px;
+  background-color: #fafafa; /* Optional: Light background color for contrast */
+  transition: box-shadow 0.2s ease; /* Smooth transition effect */
+}
+
+.saved-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.saved-item-details {
+  flex-grow: 1;
+}
+
+
+
+.saved-item-price {
+  font-weight: bold;
+}
+
+.remove-saved-item {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* CART STYLING */
+.cart-item-quantity{
+  display: flex;
+  max-width: 10%;
+  align-items: center;
+}
+
+.quantity{
+  flex:4;
+  text-align: center;
+  margin: 0 3.5px;
+  background-color: #d4d7dd;
+}
+
+.increase-quantity, 
+.reduce-quantity{
+  flex:1;
+  background-color: #d4d7dd;
+}
+
+/* SPINNER STYLING */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Makes it centered vertically */
+}
+
+.spinner {
+  font-size: 48px;
+  animation: spin 1s linear infinite;
+  color:  #898e99/* Change this color to whatever you like */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* MODAL STYLING */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark translucent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal-container {
+  display: flex;
+  width: 70vw;
+  max-width: 800px; /* Max width of the modal */
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem; /* Padding around the container */
+  position: relative;
+}
+
+.close-button{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-button:hover{
+  background: none;
+}
+
+.submit-button{
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  /* width: 50%; */
+}
+
+.submit-button.clicked {
+  background-color: #333;
+}
+
+.help-text {
+  font-size: 12px; /* Smaller font size for help text */
+  color: #666; /* Lighter color for contrast */
+  margin-top: 5px; /* Space between input and help text */
+}
+/* Modal content */
+/* .modal > div {
+  background-color: white;
+  display: flex;
+  width: 70vw;
+  max-width: 700px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
+
+/* Left image section */
+.who-you {
+  width: 100%; /* 1/4 width of the modal */
+  /* height: 50%; */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.who-you-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.home-link {
+  text-align: center; /* Center the link */
+  margin-top: 1rem; /* Space between image and the link */
+}
+
+.home-link a {
+  text-decoration: none;
+  color: #000; /* Black text for the link */
+  font-weight: bold;
+}
+
+.home-link a:hover {
+  transform: scale(1.5);
+  transition: 0.3s ease;
+  color: #333; /* Underline on hover for visual feedback */
+}
+
+/* Right form section */
+form {
+  padding: 2rem;
+  width: 75%; /* 3/4 width of the modal */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+
+/* CSS for the Shop Component */
+
+.item-grid {
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); 3 items per row */
+  grid-template-columns: repeat(auto-fill, minmax(369px, 1fr)); /* Responsive 3-column grid */
+  gap: 20px; /* Space between items */
+  padding: 20px;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.icon-button:hover {
+  background: none;
+}
+
+.add-to-cart-button{
+  background-color: #333;
+  color: white;
+}
+
+.add-to-cart-button p {
+  color: white;
+  background-color: white;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: black;
+  transition: color 0.3s, transform 0.3s;
+  /* border: black 3px solid; */
+  /* background: none; */
+}
+
+/* On hover, change icon color and slightly enlarge it */
+.icon-button:hover .icon {
+  color: #d41515; /* Red for heart or cart hover */
+  transform: scale(1.1);
+}
+
+.item-card:hover {
+  transform: scale(1.05); /* Hover effect */
+}
+
+.item-card img {
+  max-width: 100%;
+  height: 69%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.item-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.item-card p {
+  font-size: 16px;
+  color: #333;
+}
+
+
+/* Add to cart modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  width: 60%;
+  max-width: 600px;
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Modal Body */
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Item Image */
+.item-image-wrapper {
+  width: 40%;
+}
+
+.item-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Right Side: Quantity and Actions */
+.item-info {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-label {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Quantity Controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.quantity-btn {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.quantity {
+  margin: 0 1rem;
+  font-size: 1.5rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.continue-btn, .checkout-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.continue-btn {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.checkout-btn {
+  background-color: #ff5722;
+  color: #fff;
+}
+
+.checkout-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.checkout-button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+
+.checkout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.checkout-message {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.success-icon {
+  color: #28a745;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.back-to-shop-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-to-shop-button:hover {
+  background-color: #0056b3;
+}
