@@ -23,7 +23,7 @@
 
 .shoe {
   height: 20vmin;
-  /* animation: scaleUp 2s ease-in-out infinite; */
+  animation: scaleUp 2s ease-in-out infinite;
 }
 
 /* .animated-shii {

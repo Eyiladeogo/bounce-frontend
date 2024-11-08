@@ -15,6 +15,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   const [inputValue, setInputValue] = useState('')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navigate = useNavigate()
   const searchQuery = useSelector(state => state.search.query)
 
@@ -24,6 +25,8 @@ const Navbar = () => {
       navigate(`/shop?search?q=${inputValue}`)
     }
   }
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   return (
     // <nav className="navbar">
@@ -78,7 +81,7 @@ const Navbar = () => {
             }
         </div>
 
-      <div className="flex gap-4 text-2*1 icons">
+      <div className="hidden lg:flex gap-4 text-2*1 icons">
         {/* Icons */}
         <Link to='/saved'>
             <FaHeart className="text-black cursor-pointer" title="Saved Items" />
@@ -99,6 +102,23 @@ const Navbar = () => {
         {/* <button className="text-black cursor-pointer" title="Sign In" >Sign In</button> */}
         
       </div>
+
+      {/* Menu Icon for Small Screens */}
+      <div className='lg:hidden cursor-pointer text-black' onClick={toggleMenu}>
+        <FaUser className='text-2xl'/>
+      </div>
+
+      {isMenuOpen &&(
+        <div className='absolute top-16 right-0 bg-white shadow-md p-4 flex flex-col items-start lg:hidden'>
+          <Link to='/saved' className='text-black cursor-pointer py-2' onClick={toggleMenu}>
+            <FaHeart className="text-black cursor-pointer" title="Saved Items" />
+          </Link>
+          <Link to='/cart' className='text-black cursor-pointer py-2' onClick={toggleMenu}>
+            <FaShoppingCart className="text-black cursor-pointer" title="Cart" />
+          </Link>
+          {isAuthenticated ? <UserProfile/> :<SignIn />}
+        </div>
+      )}
     </nav>
   );
 };
