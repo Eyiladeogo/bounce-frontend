@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/', // Replace with your backend base URL
+  baseURL: 'https://bounce-9115b56f2109.herokuapp.com/', // Replace with your backend base URL
   headers: {
     'Content-Type': 'application/json',
   },
