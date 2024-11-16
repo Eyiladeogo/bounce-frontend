@@ -74,50 +74,52 @@ export default function Shop(){
                 <FaSpinner className="spinner" />
             </div>
         )}
-        <div className='item-grid'>
-            {/* <h1>Shop</h1> */}
+        <div className='shop-content'>
+            <div className='item-grid'>
+                {/* <h1>Shop</h1> */}
 
-            
-            {error && <p>Error fetching data: {error}</p>}
-                {items.map(item => (
-                    <div key={item.id} className='item-card'>
-                        <img src={item.image_url} alt={item.name} title={item.name}/>
-                        <h2>{item.name}</h2>
-                        <h3>${item.price}</h3>
+                
+                {error && <p>Error fetching data: {error}</p>}
+                    {items.map(item => (
+                        <div key={item.id} className='item-card'>
+                            <img src={item.image_url} alt={item.name} title={item.name}/>
+                            <h2>{item.name}</h2>
+                            <h3>${item.price}</h3>
 
-                        {/* Heart Button */}
-                        {
-                            isAuthenticated && (
+                            {/* Heart Button */}
+                            {
+                                isAuthenticated && (
+                                    <button
+                                        className="icon-button"
+                                        onClick={() => handleSaveItem(item)}
+                                        title="Save Item">
+                                        <FaHeart className="icon"
+                                        style={{ color:item.is_saved? '#d41515':'black' }} />
+                                    </button>
+                                )
+                            }
+                            
+                            
+                            {/* Add to Cart Button */}
+                            {isAuthenticated && (
                                 <button
                                     className="icon-button"
-                                    onClick={() => handleSaveItem(item)}
-                                    title="Save Item">
-                                    <FaHeart className="icon"
-                                    style={{ color:item.is_saved? '#d41515':'black' }} />
+                                    onClick={() => openModal(item)}
+                                    title="Add to Cart"
+                                >
+                                    <FaShoppingCart className='icon'
+                                        style={{color:item.in_cart? '#d41515' : 'black'}}
+                                    />
+                                
                                 </button>
-                            )
-                        }
-                        
-                        
-                        {/* Add to Cart Button */}
-                        {isAuthenticated && (
-                            <button
-                                className="icon-button"
-                                onClick={() => openModal(item)}
-                                title="Add to Cart"
-                            >
-                                <FaShoppingCart className='icon'
-                                    style={{color:item.in_cart? '#d41515' : 'black'}}
-                                />
+                            )}
                             
-                            </button>
-                        )}
-                        
-                    </div>
-                ))}
-                {selectedItem && (
-                    <AddToCartModal item={selectedItem} closeModal={closeModal} handleShopFetch={fetchShopData}/>
-                )}
+                        </div>
+                    ))}
+                    {selectedItem && (
+                        <AddToCartModal item={selectedItem} closeModal={closeModal} handleShopFetch={fetchShopData}/>
+                    )}
+            </div>
         </div>
         </>
         
