@@ -545,6 +545,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Close Button */
@@ -556,6 +557,7 @@ button:hover {
   background: none;
   border: none;
   cursor: pointer;
+  color: black;
 }
 
 /* Modal Body */
@@ -564,11 +566,13 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 /* Item Image */
 .item-image-wrapper {
   width: 40%;
+  margin-bottom: 1rem;
 }
 
 .item-image {
@@ -583,22 +587,25 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 }
 
 .item-label {
   font-weight: bold;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 /* Quantity Controls */
 .quantity-controls {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
 .quantity-btn {
-  background-color: #e0e0e0;
+  background-color: black;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
@@ -607,6 +614,7 @@ button:hover {
 
 .quantity {
   margin: 0 1rem;
+  background: none;
   font-size: 1.5rem;
 }
 
@@ -614,6 +622,8 @@ button:hover {
 .action-buttons {
   display: flex;
   gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .continue-btn, .checkout-btn {
@@ -668,6 +678,85 @@ button:hover {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+
+/* For small devices (phones and smaller tablets) */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 80%; /* Increase modal width to 80% on smaller screens */
+    padding: 1rem;
+  }
+
+  .modal-body{
+    justify-content: center;
+  }
+
+  .item-image-wrapper {
+    width: 30%; /* Reduce image width */
+    margin-bottom: 1rem; /* Space between image and item info */
+  }
+
+  .item-info {
+    width: 100%; /* Take up full width */
+    text-align: center;
+  }
+
+  .quantity-controls {
+    justify-content: center; /* Center the quantity controls */
+  }
+
+  .quantity-btn {
+    font-size: 1rem; /* Reduce button size */
+    padding: 0.4rem 0.8rem;
+  }
+
+  .quantity {
+    font-size: 1.2rem;
+  }
+
+  .action-buttons {
+    flex-direction: column; /* Stack the buttons vertically */
+    gap: 0.8rem;
+  }
+
+  .continue-btn, .checkout-btn {
+    width: 100%; /* Full width for buttons */
+    max-width: none; /* Remove max-width limit */
+  }
+}
+
+/* For very small devices (like phones in portrait mode) */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 70%; /* Make modal even larger on very small screens */
+    padding: 1rem;
+  }
+
+  .item-image-wrapper {
+    width: 100%; /* Image takes full width */
+  }
+
+  .item-info {
+    width: 100%; /* Full width for item info */
+    padding: 1rem;
+  }
+
+  .quantity-controls {
+    justify-content: space-between; /* Space out the buttons more */
+    gap: 1rem; /* Gap between quantity buttons */
+  }
+
+  .quantity-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column; /* Stack action buttons */
+    gap: 1rem;
+  }
 }
 
 .success-icon {

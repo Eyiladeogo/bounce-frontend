@@ -34,7 +34,7 @@ export default function Shop(){
 
     const openModal = (item) => {
         setSelectedItem(item);
-        console.log(selectedItem)
+        // console.log(selectedItem)
     };
 
     const closeModal = () => {
