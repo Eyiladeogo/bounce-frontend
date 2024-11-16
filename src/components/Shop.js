@@ -1,10 +1,11 @@
 import NavBar from './NavBar.js'
 import api from '../utils/api.js'
 import { useEffect, useState } from 'react'
-import { FaHeart, FaShoppingCart, FaSpinner } from 'react-icons/fa'
+import { FaCaretUp, FaHeart, FaShoppingCart, FaSpinner } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 
 import AddToCartModal from './AddToCartModal.js'
+import { AiOutlineBorderHorizontal } from 'react-icons/ai'
 
 export default function Shop(){
 
@@ -12,9 +13,24 @@ export default function Shop(){
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [selectedItem, setSelectedItem] = useState(null)
+    const [showScrollToTop, setScrollToTop] = useState(false)
 
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const searchQuery = useSelector(state => state.search.query)
+
+
+    const handleScroll = () => {
+        setScrollToTop(window.scrollY > 300)
+    }
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth'})
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
     const openModal = (item) => {
         setSelectedItem(item);
@@ -121,6 +137,14 @@ export default function Shop(){
                     )}
             </div>
         </div>
+        {showScrollToTop && (
+            <div className='back-to-top-container'>
+                <button className='back-to-top' onClick={scrollToTop}>
+                    <FaCaretUp/>
+                </button>
+            </div>
+            
+        )}
         </>
         
     )
