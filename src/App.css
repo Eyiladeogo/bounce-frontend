@@ -158,9 +158,11 @@ nav {
 /* Saved Items */
 .saved-container {
   margin: 20px;
+  margin-top: 60px;
   padding: 3.5em;
   border-radius: 3em;
   border: 1px solid #d4d7dd;
+  max-width: 100%;
 }
 
 .saved-list {
@@ -178,6 +180,7 @@ nav {
   border-radius: 8px;
   background-color: #fafafa; /* Optional: Light background color for contrast */
   transition: box-shadow 0.2s ease; /* Smooth transition effect */
+  flex-wrap: wrap;
 }
 
 .saved-item-image {
@@ -189,8 +192,6 @@ nav {
 .saved-item-details {
   flex-grow: 1;
 }
-
-
 
 .saved-item-price {
   font-weight: bold;
