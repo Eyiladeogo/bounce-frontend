@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import bounceLogo from '../assets/icon.svg'
 import SignIn from './SignIn';
 import UserProfile from './UserProfile';
@@ -19,10 +19,14 @@ const Navbar = () => {
   const navigate = useNavigate()
   const searchQuery = useSelector(state => state.search.query)
 
+  useEffect(() =>{
+    setInputValue(searchQuery || "")
+  }, [searchQuery])
+
   const handleSearch = () => {
     if (inputValue.trim()){
       dispatch(setSearchQuery(inputValue))
-      navigate(`/shop?search?q=${inputValue}`)
+      navigate(`/shop?q=${inputValue}`)
     }
   }
 
@@ -53,11 +57,11 @@ const Navbar = () => {
             <input
             type="text"
             placeholder="Search..."
-            // value={searchQuery}
+            value={inputValue}
             onChange={(e) => {
               const value = e.target.value
               setInputValue(value)
-              setSearchQuery(value)
+              // setSearchQuery(value)
               if (value === ""){
                 dispatch(setSearchQuery(null))
               }

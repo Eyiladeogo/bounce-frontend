@@ -7,6 +7,8 @@ export const store = configureStore({
         auth: authReducer,
         search: searchReducer
     },
-    // window._REDUX_DEVTOOLS_EXTENSION__ && window._REDUX_DEVTOOLS_EXTENSION__()
+    
     devTools: process.env.NODE_ENV !== 'production'
-}) 
+},
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+) 
